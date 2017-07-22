@@ -54,11 +54,13 @@ for dirpath, short_name in FILES_HERE:
     # plik MP3
     if ext == "mp3":
         print(full_name)
+        tags = []
         if args.tags is not None:
-            pass
+            tags = args.tags
         else:
-            for frame in ID3_INFO_FRAMES.values():
-                print(a_file.tags.getall(frame))
+            tags = ID3_INFO_FRAMES.keys()
+        for frame in tags:
+            print(a_file.tags.getall(frame))
         print(a_file.info.pprint())
 
 
